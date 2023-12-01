@@ -46,7 +46,6 @@ function App() {
     <div className="feels-box">
       <div className="feels">
         {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°F </p> : null}
-        <hr />
         <p>Feels Like</p>
       </div>
     </div>
@@ -66,7 +65,7 @@ function App() {
       </div>
     <div className="clouds-box">
       <div className="clouds">
-        {data.clouds ? <p classname='bold'> {data.clouds.all}%</p> : null}
+        {data.clouds ? <p className='bold'> {data.clouds.all}%</p> : null}
         <p>Cloudiness</p>
       </div>
     </div>
@@ -74,6 +73,20 @@ function App() {
       <div className="min-max">
         {data.main ? <p className ='bold'>{data.main.temp_min.toFixed()}°F-{data.main.temp_max.toFixed()}°F</p> : null}
         <p>Min-Max</p>
+      </div>
+    </div>
+    <div className="sunrise-box">
+      <div className="sunrise">
+        {data.sys ?( <p className= 'bold'> {new Date(data.sys.sunrise * 1000).toLocaleTimeString()}</p>) : null}
+        <p>Sunrise</p>
+
+      </div>
+    </div>
+    <div className="sunset-box">
+      <div className="sunset">
+        {data.sys ?( <p className= 'bold'> {new Date(data.sys.sunset * 1000).toLocaleTimeString()}</p>) : null}
+        <p>Sunset</p>
+
       </div>
     </div>
     </div>
