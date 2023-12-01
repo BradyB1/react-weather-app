@@ -39,22 +39,69 @@ function App() {
             {data.weather ? <p>{data.weather[0].main}</p> : null}
           </div>
         </div>
+        {/* this  */}
+        {data.name !== undefined && (
+  
+  <div className="data-box-container">
+    <div className="feels-box">
+      <div className="feels">
+        {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°F </p> : null}
+        <hr />
+        <p>Feels Like</p>
+      </div>
+    </div>
 
+    <div className="humidity-box">
+      <div className="humidity">
+        {data.main ? <p className='bold'>{data.main.humidity}%</p> : null}
+        <p>Humidity</p>
+      </div>
+    </div>
+
+    <div className="wind-box">
+      <div className="wind">
+        {data.wind ? <p className='bold'>{data.wind.speed.toFixed()} MPH</p> : null}
+        <p>Wind Speed</p>
+      </div>
+      </div>
+    <div className="clouds-box">
+      <div className="clouds">
+        {data.clouds ? <p classname='bold'> {data.clouds.all}%</p> : null}
+        <p>Cloudiness</p>
+      </div>
+    </div>
+    <div className="min-max-box">
+      <div className="min-max">
+        {data.main ? <p className ='bold'>{data.main.temp_min.toFixed()}°F-{data.main.temp_max.toFixed()}°F</p> : null}
+        <p>Min-Max</p>
+      </div>
+    </div>
+    </div>
+
+    
+  
+)}
+
+{/* to this */}
         {data.name != undefined &&
           <div className="bottom">
-            <div className="feels">
+            {/* <div className="feels">
               {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°F</p> : null}
               <p>Feels Like</p>
-            </div>
-            <div className="humidity">
+            </div> */}
+            {/* <div className="humidity">
               {data.main ? <p className='bold'>{data.main.humidity}%</p> : null}
               <p>Humidity</p>
-            </div>
-            <div className="wind">
+            </div> */}
+            {/* <div className="wind">
               {data.wind ? <p className='bold'>{data.wind.speed.toFixed()} MPH</p> : null}
 
               <p>Wind Speed</p>
-            </div>
+            </div> */}
+            {/* <div className="min-max">
+            {data.main ? <p className ='bold'>{data.main.temp_min.toFixed()}°F-{data.main.temp_max.toFixed()}°F</p> : null}
+            <p>Min-Max</p>
+            </div> */}
           </div>
         }
 

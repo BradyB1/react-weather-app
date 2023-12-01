@@ -18,10 +18,12 @@ body {
 
 p {
   font-size: 1.6rem;
+  text-align: center;
 }
 
 h1 {
   font-size: 6rem;
+  text-align: center;
 }
 
 
@@ -33,9 +35,10 @@ h1 {
   color: #fff;
 }
 
-.app:before {
+/* background: url("./asset/sunset.jpg") no-repeat center center/cover; */
+/* .app:before {
   content: '';
-  background: url("./asset/sunset.jpg") no-repeat center center/cover;
+  background: url("https://giphy.com/gifs/sunrise-sun-WzLDljBpplUvm") no-repeat center center/cover;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -43,6 +46,20 @@ h1 {
   left: 0;
   z-index: -1;
 
+} */
+
+.app:before {
+  content: '';
+  background: url("https://media.giphy.com/media/WzLDljBpplUvm/giphy.gif") no-repeat center center/cover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .app .search {
@@ -83,14 +100,15 @@ h1 {
 
 }
 
-.app .description {
+/* moves the conditions tag aroung (cloudly, mist, etc) */
+/* .app .description {
   position: relative;
   right: -90%;
   transform-origin: 0 0;
   transform: rotate(269deg);
-}
+} */
 
-.app .bottom {
+/* .app .bottom {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
@@ -99,8 +117,128 @@ h1 {
   padding: 1rem;
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.2);
+} */
+/* this is a test for the individual boxes */
+
+/* feels change testing */
+/* .feels-box {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 22%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.feels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+
+/* humidity testing */
+/* .humidity-box {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 22%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.humidity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+/* wind testing */
+
+/* .wind-box {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 26%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.wind {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+
+/* min-max temp testing */
+/* .min-max-box {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 26%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.min-max {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+/* Container for the first three boxes */
+.data-box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 1rem auto;
 }
 
+/* feels change testing */
+.feels-box,
+.humidity-box,
+.wind-box, .clouds-box, .min-max-box {
+  width: 38%;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem; /* Add margin to create space between the boxes */
+}
+
+.feels,
+.humidity,
+.wind, .clouds,.min-max {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* min-max temp testing */
+/* .min-max-box {
+  width: 38%; 
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 1rem auto; 
+}
+
+.min-max {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} */
+
+
+
+
+/* don't delete this */
 .bold {
   font-weight: 700;
 }
