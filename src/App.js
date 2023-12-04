@@ -4,7 +4,12 @@ import axios from 'axios'
 function App() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState("")
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=438f4f20a95048ebb8bbf12f71594554`
+
+  const api_key = "438f4f20a95048ebb8bbf12f71594554"
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${api_key}`
+
+
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
@@ -15,16 +20,22 @@ function App() {
       setLocation("")
     }
   }
-
   return (
     <div className="app">
+       <div className="navbar">
+    <a href="/home">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </div>
       <div className="search">
+        
         <input
           value={location}
           onChange={event => setLocation(event.target.value)}
-          onKeyPress={searchLocation}
+          onKeyDown={searchLocation}
           placeholder='Enter Location'
           type="text" />
+
       </div>
       <div className="container">
         <div className="top">
@@ -77,14 +88,14 @@ function App() {
     </div>
     <div className="sunrise-box">
       <div className="sunrise">
-        {data.sys ?( <p className= 'bold'> {new Date(data.sys.sunrise * 1000).toLocaleTimeString()}</p>) : null}
+        {data.sys ?( <p className= 'bold'> {new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit', hour12: true})}</p>) : null}
         <p>Sunrise</p>
 
       </div>
     </div>
     <div className="sunset-box">
       <div className="sunset">
-        {data.sys ?( <p className= 'bold'> {new Date(data.sys.sunset * 1000).toLocaleTimeString()}</p>) : null}
+        {data.sys ?( <p className= 'bold'> {new Date(data.sys.sunset * 1000).toLocaleTimeString([],{hour: 'numeric', minute: '2-digit', hour12: true})}</p>) : null}
         <p>Sunset</p>
 
       </div>
