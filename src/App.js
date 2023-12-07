@@ -28,8 +28,8 @@ function App() {
     <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
-    <MyRoutes /> {/* Use the imported component */}
   </div>
+  <MyRoutes /> {/* Use the imported component */}
       <div className="search">
         
         <input
@@ -110,7 +110,7 @@ function App() {
 )}
 
 {/* to this */}
-        {data.name != undefined &&
+        {data.name !== undefined &&
           <div className="bottom">
             {/* <div className="feels">
               {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°F</p> : null}
