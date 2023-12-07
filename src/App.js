@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react';
+import axios from 'axios';
+import MyRoutes  from "./Routes"; 
 
 function App() {
+
   const [data, setData] = useState({})
   const [location, setLocation] = useState("")
 
@@ -23,9 +25,10 @@ function App() {
   return (
     <div className="app">
        <div className="navbar">
-    <a href="/home">Home</a>
+    <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
+    <MyRoutes /> {/* Use the imported component */}
   </div>
       <div className="search">
         
@@ -130,7 +133,7 @@ function App() {
         }
 
       </div>
-
+        
     </div>
   );
 }
