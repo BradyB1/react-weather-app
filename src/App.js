@@ -1,3 +1,10 @@
+
+/*
+This script is not in use currently.
+commented out content to avoid confusion during troubleshooting.
+*/
+
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import MyRoutes  from "./Routes"; 
