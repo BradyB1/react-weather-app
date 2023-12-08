@@ -7,10 +7,12 @@ const About = () => {
 
   return (
     <div className="app">
-        <h1>About Page</h1>
+      <h1>About</h1>
+      <div className= "text-content">
         <div>
           <p>Group project for INST377 class</p>
           <br></br>
+        </div>
         </div>
     </div>
   )
