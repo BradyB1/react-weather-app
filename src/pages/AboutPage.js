@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './About.css';
 
 const About = () => {
+  useEffect(() => {
+    document.title = "React Weather | About"   }, []);
 
   return (
     <div className="app">

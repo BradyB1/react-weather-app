@@ -9,7 +9,9 @@ const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
+    document.title = "React Weather | Home"
     const api_key = '438f4f20a95048ebb8bbf12f71594554';
+
 
     const getWeatherData = (latitude, longitude) => {
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${api_key}`;
