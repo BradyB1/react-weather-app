@@ -65,8 +65,9 @@ h1 {
   padding: 1rem;
 }
 
+/* 90% search bar for mobile users */
 .app input {
-  width: 50%;
+  width: 90%;
   padding: .7rem 1.5rem;
   font-size: 1.2rem;
   border-radius: 25px;

@@ -4,8 +4,15 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
+    /* adding for test */
+    padding: 0;
+    list-style: none;
   }
   
+  /* added to remove li bullets */
+  .navbar li {
+    display:inline; 
+  }
   .navbar a {
     display: block;
     color: #f2f2f2;
@@ -15,7 +22,7 @@
   }
   
   .navbar a:hover {
-    background-color: #ddd;
+    background-color: #676565;
     color: black;
   }
 
