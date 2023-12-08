@@ -1,11 +1,17 @@
 import React from 'react';
 import './About.css';
 
+const About = () => {
 
-
-
-export const About = () => {
   return (
-      <h1>You made it to the about page</h1>
+    <div className="app">
+        <h1>About Page</h1>
+        <div>
+          <p>Group project for INST377 class</p>
+          <br></br>
+        </div>
+    </div>
   )
 }
+
+export default About;
