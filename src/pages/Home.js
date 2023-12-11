@@ -196,6 +196,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../index.css';
 import axios from 'axios';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 const Home = () => {
   const [location, setLocation] = useState('');
@@ -203,11 +204,13 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
   const navigate = useNavigate();
+  var latitude =0;
+  var longitude=0;
+  var cityName="";
 
   useEffect(() => {
     document.title = "React Weather | Home"
     const api_key = '438f4f20a95048ebb8bbf12f71594554';
-
     const getWeatherData = (latitude, longitude) => {
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${api_key}`;
 
@@ -228,8 +231,8 @@ const Home = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
+          latitude = position.coords.latitude;
+          longitude = position.coords.longitude;
 
           getWeatherData(latitude, longitude);
         },
@@ -269,8 +272,10 @@ const Home = () => {
     }
   };
 
+  /*
   const handleViewLocation = () => {
     if (weatherData && weatherData.coord) {
+      
       const { lat, lon } = weatherData.coord;
       const cityName = weatherData.name;
 
@@ -278,8 +283,9 @@ const Home = () => {
         state: { latitude: lat, longitude: lon, cityName },
         
       });
+
     }
-  };
+  };*/
 
   return (
     <div className="app">
@@ -392,10 +398,15 @@ const Home = () => {
             </div>
           </div>
         )}
-
-        {weatherData && weatherData.coord && (
-          <button onClick={handleViewLocation} id = "viewLoc-button">View Location</button>
-        )}
+        <MapContainer center={[latitude, longitude]} zoom={13} style={{ height: '400px', width: '100%' }}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={[latitude, longitude]}>
+            <Popup>{cityName}</Popup>
+          </Marker>
+        </MapContainer>
       </div>
     </div>
   );
