@@ -264,3 +264,25 @@ h1 {
   cursor: pointer;
   background-color: #393a3a;
 }
+
+
+/* location styling */
+
+.map-container{
+  position:relative;
+  z-index: 1;
+  width: 10%;
+  height: 10%;
+  
+}
+
+#viewLoc-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #9a9393; 
+  color: white;
+  text-decoration: none;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
