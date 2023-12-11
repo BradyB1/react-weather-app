@@ -113,96 +113,6 @@ h1 {
 
 }
 
-/* moves the conditions tag aroung (cloudly, mist, etc) */
-/* .app .description {
-  position: relative;
-  right: -90%;
-  transform-origin: 0 0;
-  transform: rotate(269deg);
-} */
-
-/* .app .bottom {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 100%;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.2);
-} */
-/* this is a test for the individual boxes */
-
-/* feels change testing */
-/* .feels-box {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 22%;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.feels {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
-
-/* humidity testing */
-/* .humidity-box {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 22%;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.humidity {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
-/* wind testing */
-
-/* .wind-box {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 26%;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.wind {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
-
-/* min-max temp testing */
-/* .min-max-box {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 26%;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.min-max {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
 
 /* Container for the first three boxes */
 .data-box-container {
@@ -261,7 +171,28 @@ h1 {
 
 /* styling contact page since it seems to react from here */
 
-textarea{
+/* changes font size of the "Contact Us" h1 */
+#Page-Title{
+  font-size: 65px;
+}
+
+/* This is the form box styling */
+.text-content-form {
+  background-color: #131123;
+  max-width: 375px;
+  height: 700px;
+  margin: auto;
+  padding: 0 1rem;
+  position: relative;
+  top: 5%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  max-height: 600px;
+}
+
+/* styling the textArea box for the message -- makes it similar to the styling of the name and email box   */
+#message-textArea{
   min-width: 90%;
   max-width: 90%;
   padding: .7rem 1.5rem;
@@ -273,27 +204,57 @@ textarea{
   margin-bottom: 15px;
 }
 
+/* gives margin between submit and "Connect with us on Linkedin */
+.Connect-container {
+  margin:15px 0px;
+}
+
+/* Centers the "Connect with us on Linkedin" message */
+#connect-message{
+  text-align: center;
+}
+
+/* The hr element styling*/
+#LinkedinLink-Divider{
+  margin-bottom: 5px;
+}
+
+
+/* this section starts the linkedin ul/buttons styling */
+
 .linkedin-links {
   list-style: none;
   padding: 0;
   margin: 0;
+  display:flex;
+
 }
 
+/* spacing on li elements */
 .linkedin-links li {
   margin-bottom: 10px;
+  margin: 0px 2px;
 }
 
+/* styles the buttons */
 .linkedin-links a {
   display: inline-block;
   padding: 8px 16px;
-  background-color: #0077b5; /* LinkedIn blue color */
+  background-color: #9a9393; 
   color: white;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 15px;
   font-weight: bold;
   transition: background-color 0.3s ease-in-out;
 }
 
+/* adds a hover color */
 .linkedin-links a:hover {
-  background-color: #005183; /* Darker blue on hover */
+  background-color: #393a3a; 
+}
+/* this is the end of the linkedin ul/button styling */
+
+#contact-response{
+  margin-top: 4px;
+  font-size: 15px;
 }

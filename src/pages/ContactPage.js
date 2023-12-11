@@ -7,7 +7,7 @@ const Contact = () => {
   const [message, setMessage] = useState(""); 
   const handleSubmit = (event) => {
     event.preventDefault();
-    document.getElementById("contact-response").innerHTML = `Thanks, ${name}! We will get back to you via email: ${email}. Your message to us was: ${message}`;
+    document.getElementById("contact-response").innerHTML = `Thanks, <i>${name}!</i> <br>  We will get back to you via email at <i>${email}</i>. `;
   }
 
   useEffect(() => {
@@ -16,8 +16,9 @@ const Contact = () => {
 
   return (
     <div className="app">
-      <h1>Contact Us</h1>
-      <div className="text-content">
+      <h1 id = "Page-Title">Contact Us
+      </h1>
+      <div className="text-content-form">
         <div>
           <p>Contact us if you have questions:</p>
         
@@ -43,6 +44,7 @@ const Contact = () => {
           {/* collects message */}
           <label>Enter your message:
             <textarea
+              id = "message-textArea"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
@@ -51,11 +53,14 @@ const Contact = () => {
           <input type="submit" />
         </form>
         <p id="contact-response"></p>
-        <div>Connect with us on LinkedIn</div>
+        <div className='Connect-container'> <p id ="connect-message">Connect with us on LinkedIn</p>
+        <hr id = "LinkedinLink-Divider"></hr></div>
+        
         <div>
         <ul className = "linkedin-links">
               <li> <a href='https://www.linkedin.com/in/brady-buttrey-2b873a140/'>Brady Buttrey</a> </li>
-              <li><a href = ''>Farah</a></li>
+              {/* Farah add name and link here and then delete this comment (don't forget to push it) */}
+              <li><a href = ''>Farah Lname</a></li>
               <li> <a href = 'https://www.linkedin.com/in/james-miller-649768222/'>James Miller</a></li>
             </ul>
         </div>
