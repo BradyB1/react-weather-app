@@ -88,9 +88,9 @@ const Contact = () => {
 
         <div>
           <ul className="linkedin-links">
-            <li> <a href='https://www.linkedin.com/in/brady-buttrey-2b873a140/'>Brady Buttrey</a> </li>
-            <li><a href=''>Farah Lname</a></li>
-            <li> <a href='https://www.linkedin.com/in/james-miller-649768222/?trk=contact-info'>James Miller</a></li>
+            <li> <a href='https://www.linkedin.com/in/brady-buttrey-2b873a140/' target="_blank" rel="noopener noreferrer">Brady Buttrey</a> </li>
+            <li><a href='https://www.linkedin.com/in/farahassgari/' target="_blank" rel="noopener noreferrer">Farah Assgari</a></li>
+            <li> <a href='https://www.linkedin.com/in/james-miller-649768222/?trk=contact-info' target="_blank" rel="noopener noreferrer">James Miller</a></li>
           </ul>
         </div>
       </div>
