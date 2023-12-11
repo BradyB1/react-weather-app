@@ -258,3 +258,9 @@ h1 {
   margin-top: 4px;
   font-size: 15px;
 }
+
+/* submit button hover effect */
+#contact-submit:hover{
+  cursor: pointer;
+  background-color: #393a3a;
+}
