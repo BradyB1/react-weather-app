@@ -192,8 +192,8 @@
 
 // export default Home;
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+//import { useNavigate } from 'react-router-dom';
 import '../index.css';
 import 'leaflet/dist/leaflet.css'
 import axios from 'axios';
@@ -204,16 +204,17 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
-  const navigate = useNavigate();
-  var latitude =0;
-  var longitude=0;
-  var cityName="";
+  //const navigate = useNavigate();
+  const latitude =useRef(0);
+  const longitude=useRef(0);
+  let cityName="";
 
   useEffect(() => {
     document.title = "React Weather | Home"
     const api_key = '438f4f20a95048ebb8bbf12f71594554';
-    const getWeatherData = (latitude, longitude) => {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${api_key}`;
+
+    const getWeatherData = (lat, long) => {
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${api_key}`;
 
       axios
         .get(url)
@@ -232,10 +233,10 @@ const Home = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          latitude = position.coords.latitude;
-          longitude = position.coords.longitude;
+          latitude.current = position.coords.latitude;
+          longitude.current = position.coords.longitude;
 
-          getWeatherData(latitude, longitude);
+          getWeatherData(latitude.current, longitude.current);
         },
         (error) => {
           console.error(`Error getting geolocation: ${error.message}`);
@@ -253,6 +254,8 @@ const Home = () => {
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
       setLoading(true);
+      cityName=location;
+      console.log(cityName);
       const api_key = '438f4f20a95048ebb8bbf12f71594554';
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${api_key}`;
 
@@ -272,21 +275,6 @@ const Home = () => {
       setLocation('');
     }
   };
-
-  /*
-  const handleViewLocation = () => {
-    if (weatherData && weatherData.coord) {
-      
-      const { lat, lon } = weatherData.coord;
-      const cityName = weatherData.name;
-
-      navigate('/location',{
-        state: { latitude: lat, longitude: lon, cityName },
-        
-      });
-
-    }
-  };*/
 
   return (
     <div className="app">
@@ -396,18 +384,21 @@ const Home = () => {
                   <p>Sunset</p>
                 </div>
               </div>
+
             </div>
+            <div>
+              <MapContainer center={[latitude.current, longitude.current]} zoom={25} style={{ height: '500px', width: '100%' }}>
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                <Marker position={[latitude.current, longitude.current]}>
+                  <Popup>{cityName}</Popup>
+                </Marker>
+              </MapContainer>
+              </div>
           </div>
         )}
-        <MapContainer center={[latitude, longitude]} zoom={13} style={{ height: '400px', width: '100%' }}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <Marker position={[latitude, longitude]}>
-            <Popup>{cityName}</Popup>
-          </Marker>
-        </MapContainer>
       </div>
     </div>
   );
