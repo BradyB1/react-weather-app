@@ -47,9 +47,11 @@ const Contact = () => {
   return (
     <div className="app">
       <h1 id="Page-Title-Contact">Contact Us</h1>
+      <hr id = "contact-title-hr"></hr>
       <div className="text-content-form">
         <div>
           <p>Contact us if you have questions:</p>
+          <hr id = "contact-box-hr"></hr>
         </div>
         <form onSubmit={handleSubmit}>
           {/* collects name */}

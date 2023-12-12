@@ -268,6 +268,10 @@ h1 {
   background-color: #393a3a;
 }
 
+#contact-box-hr{
+  width:100%;
+  margin:auto;
+}
 
 /* location styling */
 
