@@ -29,6 +29,7 @@ const About = () => {
               <hr id="about-api-hr"></hr>
               <dd>  - <b>OpenWeatherMap</b>: This API allowed us to fetch data regarding the weather and conditions in different locations. </dd>
               <dd>  - <b>Geolocation</b>: This API allows the app to collect the users current location. Elimnating the need for users to enter their current address to get results. -- Please enter sure you have location features enabled on whatever browser you are using.  </dd>
+              <dd>  - <b>Leaflet.js</b>: Leaflet.js allows the application to generate a map, focused and pinning on your location or location you search.</dd>
             </dl>
           </p>
           {/* was here */}
