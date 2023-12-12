@@ -192,7 +192,7 @@
 
 // export default Home;
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 //import { useNavigate } from 'react-router-dom';
 import '../index.css';
 import 'leaflet/dist/leaflet.css'
@@ -205,9 +205,7 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
   //const navigate = useNavigate();
-  const latitude =useRef(0);
-  const longitude=useRef(0);
-  let cityName="";
+
 
   useEffect(() => {
     document.title = "React Weather | Home"
@@ -233,10 +231,10 @@ const Home = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          latitude.current = position.coords.latitude;
-          longitude.current = position.coords.longitude;
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
 
-          getWeatherData(latitude.current, longitude.current);
+          getWeatherData(latitude, longitude);
         },
         (error) => {
           console.error(`Error getting geolocation: ${error.message}`);
@@ -254,8 +252,7 @@ const Home = () => {
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
       setLoading(true);
-      cityName=location;
-      console.log(cityName);
+
       const api_key = '438f4f20a95048ebb8bbf12f71594554';
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${api_key}`;
 
@@ -275,6 +272,38 @@ const Home = () => {
       setLocation('');
     }
   };
+
+    /*
+  const handleViewLocation = () => {
+    if (weatherData && weatherData.coord) {
+      
+      const { lat, lon } = weatherData.coord;
+      const cityName = weatherData.name;
+      navigate('/location',{
+        state: { latitude: lat, longitude: lon, cityName },
+        
+      });
+    }
+  };*/
+
+  function handleViewLocation() {
+    if (weatherData && weatherData.coord) {
+      console.log("have coords")
+      const { lat, lon } = weatherData.coord;
+      const cityName = weatherData.name;
+      return  <MapContainer center={[lat, lon ]} zoom={15} style={{ height: '600px', width: '100%' }}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+        <Marker position={[lat, lon ]}>
+          <Popup>{cityName}</Popup>
+        </Marker>
+      </MapContainer>
+
+      }
+    }
+
 
   return (
     <div className="app">
@@ -384,21 +413,13 @@ const Home = () => {
                   <p>Sunset</p>
                 </div>
               </div>
-
             </div>
-            <div>
-              <MapContainer center={[latitude.current, longitude.current]} zoom={25} style={{ height: '500px', width: '100%' }}>
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <Marker position={[latitude.current, longitude.current]}>
-                  <Popup>{cityName}</Popup>
-                </Marker>
-              </MapContainer>
-              </div>
+            
           </div>
         )}
+      </div>
+      <div>
+          {handleViewLocation()}
       </div>
     </div>
   );
