@@ -57,9 +57,9 @@ const About = () => {
 
   useEffect(() => {
     document.title = "React Weather | About";
-    document.body.classList.add('about-page'); // Add a unique class
+    document.body.classList.add('about-page'); 
     return () => {
-      document.body.classList.remove('about-page'); // Remove the class when the component unmounts
+      document.body.classList.remove('about-page');
     };
   }, []);
   return (
