@@ -24,7 +24,7 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
   const [zoom, setZoom] = useState(10);
-  //const navigate = useNavigate();
+  const [center, setCenter] = useState([0, 0]);
 
 
 
@@ -68,22 +68,25 @@ const Home = () => {
     document.title = "React Weather | Home"
     const api_key = '438f4f20a95048ebb8bbf12f71594554';
 
-    const getWeatherData = (lat, long) => {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${api_key}`;
+    
+  const getWeatherData = (lat, long) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${api_key}`;
 
-      axios
-        .get(url)
-        .then((response) => {
-          setWeatherData(response.data);
-          setLoading(false);
-          setError(null);
-        })
-        .catch((error) => {
-          console.error('Error fetching weather data:', error);
-          setLoading(false);
-          setError('Error fetching weather data. Please try again.');
-        });
-    };
+    axios
+      .get(url)
+      .then((response) => {
+        setWeatherData(response.data);
+        setCenter([lat, long]);
+        setLoading(false);
+        setError(null);
+      })
+      .catch((error) => {
+        console.error('Error fetching weather data:', error);
+        setLoading(false);
+        setError('Error fetching weather data. Please try again.');
+      });
+      setLocation('');
+  };
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -180,7 +183,7 @@ const Home = () => {
 
 
   return (
-    <div className="app" style={backgroundStyle}>
+  <div className="app" style={backgroundStyle}>
       <div className="search">
         <input
           value={location}
@@ -312,12 +315,11 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
+            {handleViewLocation(center)}
           </div>
         )}
       </div>
       <div>
-          {handleViewLocation()}
       </div>
     </div>
   );
