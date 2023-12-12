@@ -67,10 +67,6 @@ const Navbar = () => {
           <li>
             <a href="/">Home</a>
           </li>
-          {/* adding location page */}
-          <li>
-            <a href= '/location'>Location</a>
-          </li>
           <li>
             <a href="/about">About</a>
           </li>

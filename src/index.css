@@ -175,7 +175,7 @@ h1 {
 /* styling contact page since it seems to react from here */
 
 /* changes font size of the "Contact Us" h1 */
-#Page-Title{
+#Page-Title-Contact{
   font-size: 65px;
 }
 
@@ -287,4 +287,46 @@ h1 {
   border-radius: 15px;
   font-weight: bold;
   transition: background-color 0.3s ease-in-out;
+}
+
+
+/* about page styling */
+
+#about-h1{
+  font-size: 65px;
+}
+
+#about-h1-hr{
+  height: 3px;
+  margin-bottom: 4px;
+}
+
+#about-site-desc{
+  margin-top: 20px;
+  font-size: 20px;
+  
+}
+
+
+dl dd{
+  margin: 7px;
+}
+
+#tech-stack-desc{
+  margin-bottom: 1px;
+}
+#tech-stack-hr{
+  width: 60%;
+  margin:auto;
+}
+
+#about-api-hr{
+  width:90%;
+  margin:auto;
+}
+
+#about-designedBy {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 25px;
 }
