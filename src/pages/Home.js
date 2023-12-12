@@ -27,6 +27,43 @@ const Home = () => {
   //const navigate = useNavigate();
 
 
+
+  const getBackgroundImage = () => {
+    if (weatherData && weatherData.weather && weatherData.weather[0]) {
+      const weatherDescription = weatherData.weather[0].main;
+
+      switch (weatherDescription) {
+        case 'Thunderstorm':
+          return 'url(thunderstorm.jpg)';
+        case 'Drizzle':
+          return 'url(drizzle.jpg)';
+        case 'Rain':
+          return 'url(rain.jpg)';
+        case 'Snow':
+          return 'url(snow.jpg)';
+        case 'Atmosphere':
+          return 'url(atmosphere.jpg)';
+        case 'Clear':
+          return 'url(clear.jpg)';
+        case 'Clouds':
+          return 'url(cloudy.jpg)';
+        default:
+          return 'url(clear.jpg)';
+      }
+    }
+
+   
+    return 'url(default-background.jpg)';
+  };
+
+    // Apply background image
+    const backgroundStyle = {
+      backgroundImage: getBackgroundImage(),
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '100%', 
+    };
   useEffect(() => {
     document.title = "React Weather | Home"
     const api_key = '438f4f20a95048ebb8bbf12f71594554';
@@ -143,7 +180,7 @@ const Home = () => {
 
 
   return (
-    <div className="app">
+    <div className="app" style={backgroundStyle}>
       <div className="search">
         <input
           value={location}
