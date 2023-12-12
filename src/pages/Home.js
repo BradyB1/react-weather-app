@@ -210,7 +210,7 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="min-max-box">
+              {/* <div className="min-max-box">
                 <div className="min-max">
                   {weatherData.main ? (
                     <p className="bold">
@@ -219,7 +219,31 @@ const Home = () => {
                   ) : null}
                   <p>Min-Max</p>
                 </div>
+              </div> */}
+            
+              <div className="min-box">
+                <div className="min">
+                  {weatherData.main ? (
+                    <p className="bold">
+                      {weatherData.main.temp_min.toFixed()}°F
+                    </p>
+                  ) : null}
+                  <p>Todays Low</p>
+                </div>
               </div>
+
+            {/* adding */}
+            <div className="max-box">
+                <div className="max">
+                  {weatherData.main ? (
+                    <p className="bold">
+                      {weatherData.main.temp_max.toFixed()}°F
+                    </p>
+                  ) : null}
+                  <p>Todays High</p>
+                </div>
+              </div>
+
 
               <div className="sunrise-box">
                 <div className="sunrise">

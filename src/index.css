@@ -130,7 +130,7 @@ h1 {
 /* feels change testing */
 .feels-box,
 .humidity-box,
-.wind-box, .clouds-box, .min-max-box, .sunrise-box, .sunset-box {
+.wind-box, .clouds-box, .min-box, .max-box, .sunrise-box, .sunset-box {
   width: 38%;
   padding: 1rem;
   border-radius: 12px;
@@ -140,7 +140,7 @@ h1 {
 
 .feels,
 .humidity,
-.wind, .clouds,.min-max, .sunrise, .sunset {
+.wind, .clouds, .min, .max, .sunrise, .sunset {
   display: flex;
   flex-direction: column;
   align-items: center;
