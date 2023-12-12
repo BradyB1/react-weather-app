@@ -301,12 +301,126 @@ h1 {
 
 /* about page styling */
 
+.app-about {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #373738; 
+  box-sizing: border-box;
+}
+
+#about-h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 65px;
+}
+
+#about-h1-hr {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #fff;
+}
+
+.text-content-about {
+  margin-top: 20px;
+}
+
+.about-section {
+  background-color: #67686a; 
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 20px;
+}
+
+.about-section p,
+.about-section dl {
+  line-height: 1.6;
+  text-align: center;
+  background-color: #67686a;
+}
+
+#tech-stack{
+  font-size: 25px;
+}
+.about-section hr {
+  width: 90%;
+  margin: auto;
+  border: 1px solid #333; 
+}
+
+#about-designedBy {
+  margin-top: 30px;
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+#supabaseImg, #vercelImg{
+  width: 10%; 
+  height: auto; 
+  max-width: 300px; 
+  display: block; 
+  margin: 10px auto;  
+}
+
+#reactImg{
+  width:15%;
+  height: 30px;
+  max-width: 300px;
+  display:block; 
+  margin: 10px auto;
+}
+
+#opwimg{
+  width:30%;
+  height: 84px;
+  max-width: 300px;
+  display:inline; 
+  margin: 10px auto;
+}
+
+#geoloc{
+  width:35%;
+  height: 84px;
+  max-width: 300px;
+  display:inline; 
+  margin: 10px auto;
+}
+
+#leafimg{
+  width:31%;
+  height: 84px;
+  max-width: 300px;
+  display:inline; 
+  margin: 10px auto;
+}
+
+/* Styles specific to About page */
+.about-page  {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #373738;
+  box-sizing: border-box;
+  height: auto; 
+}
+
+
+/* old about styling */
+
+/* 
 #about-h1{
   font-size: 65px;
 }
 
 #about-h1-hr{
-  /* height: 3px; */
+
   margin-bottom: 4px;
 }
 
@@ -315,7 +429,6 @@ h1 {
   font-size: 20px;
   
 }
-
 
 dl dd{
   margin: 7px;
@@ -338,4 +451,7 @@ dl dd{
   text-align: center;
   font-size: 15px;
   margin-top: 25px;
-}
+} */
+
+
+
