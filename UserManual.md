@@ -2,7 +2,7 @@
 
 # Loading the app.
 
-To open the mobile website, navigate to:
+To open the mobile website, navigate to: https://react-weather-app-green-mu.vercel.app/
 Once you have arrived on the home page, be sure to have location services enable and accept the websites attempt to use your current location.
 This will allow you to skip searching for your current locations weather and provide for accurate information.
 
