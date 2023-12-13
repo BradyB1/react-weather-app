@@ -19,7 +19,7 @@ const About = () => {
       <div className="text-content-about">
         <div className="about-section" id="about-site-desc">
           <p>
-            This Weather application provides different metrics for a specific location. When a user opens the application, the user's coordinates are used to populate the home page with the default location's weather metrics. If the host device's location is disabled or location is not found, the user would be prompted to manually enter the location in the search input field.
+            Weatherly provides different metrics for a specific location. When a user opens the application, the user's coordinates are used to populate the home page with the default location's weather metrics. If the host device's location is disabled or location is not found, the user would be prompted to manually enter the location in the search input field.
           </p>
         </div>
         <div className="about-section" id="tech-stack-desc">
