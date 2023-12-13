@@ -230,7 +230,9 @@ h1 {
 #Page-Title-Contact{
   font-size: 65px;
 }
-
+.contact-page {
+  background-color: #726f6f;
+}
 /* This is the form box styling */
 .text-content-form {
   background-color: #131123;

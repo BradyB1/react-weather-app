@@ -10,7 +10,13 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
+  useEffect(() => {
+    document.title = "React Weather | Contact";
+    document.body.classList.add('contact-page');  // Add a class to the body element
+    return () => {
+      document.body.classList.remove('contact-page');
+    };
+  }, []);
   const handleSubmit = async (event) => {
     event.preventDefault();
 
