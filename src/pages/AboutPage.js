@@ -19,12 +19,12 @@ const About = () => {
       <div className="text-content-about">
         <div className="about-section" id="about-site-desc">
           <p>
-            Weather application provides different metrics for a specific location. When a user opens the application, the user's coordinate is used to populate the home page with the default location's weather metrics. If the host device's location is disabled or location is not found, the user would be prompted to manually enter the location in the search input field.
+            This Weather application provides different metrics for a specific location. When a user opens the application, the user's coordinates are used to populate the home page with the default location's weather metrics. If the host device's location is disabled or location is not found, the user would be prompted to manually enter the location in the search input field.
           </p>
         </div>
         <div className="about-section" id="tech-stack-desc">
           <dl>
-            <dt id = "tech-stack">Technology Stack utilized:</dt>
+            <dt id = "tech-stack">Technology Stack Utilized:</dt>
             <hr />
             <dd>- FrontEnd: <b>React</b></dd>
             <img src= "/reactImg.jpg" id = "reactImg" alt = "reactImg"></img>

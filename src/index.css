@@ -382,7 +382,7 @@ h1 {
 }
 
 .about-section p {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .about-section p,
@@ -459,47 +459,6 @@ h1 {
   height: auto; 
 }
 
-
-/* old about styling */
-
-/* 
-#about-h1{
-  font-size: 65px;
-}
-
-#about-h1-hr{
-
-  margin-bottom: 4px;
-}
-
-#about-site-desc{
-  margin-top: 20px;
-  font-size: 20px;
-  
-}
-
-dl dd{
-  margin: 7px;
-}
-
-#tech-stack-desc{
-  margin-bottom: 1px;
-}
-#tech-stack-hr{
-  width: 60%;
-  margin:auto;
-}
-
-#about-api-hr{
-  width:90%;
-  margin:auto;
-}
-
-#about-designedBy {
-  text-align: center;
-  font-size: 15px;
-  margin-top: 25px;
-} */
 
 
 

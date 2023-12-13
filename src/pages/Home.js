@@ -189,7 +189,7 @@ const Home = () => {
           value={location}
           onChange={(event) => setLocation(event.target.value)}
           onKeyDown={searchLocation}
-          placeholder="Enter Location"
+          placeholder="Enter Location (City)"
           type="text"
         />
       </div>
