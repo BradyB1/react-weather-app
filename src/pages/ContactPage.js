@@ -10,8 +10,9 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
   useEffect(() => {
-    document.title = "React Weather | Contact";
+    document.title = "Weatherly | Contact";
     document.body.classList.add('contact-page');  // Add a class to the body element
     return () => {
       document.body.classList.remove('contact-page');
@@ -45,10 +46,6 @@ const Contact = () => {
       document.getElementById("contact-response").innerHTML = 'An error occurred while submitting the form.';
     }
   };
-
-  useEffect(() => {
-    document.title = "React Weather | Contact";
-  }, []);
 
   return (
     <div className="app">

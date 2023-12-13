@@ -65,7 +65,7 @@ const Home = () => {
       height: '100%', 
     };
   useEffect(() => {
-    document.title = "React Weather | Home"
+    document.title = "Weatherly | Home"
     const api_key = '438f4f20a95048ebb8bbf12f71594554';
 
     

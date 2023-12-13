@@ -233,6 +233,13 @@ h1 {
 .contact-page {
   background-color: #726f6f;
 }
+
+#contact-title-hr {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #fff;
+}
+
 /* This is the form box styling */
 .text-content-form {
   background-color: #131123;

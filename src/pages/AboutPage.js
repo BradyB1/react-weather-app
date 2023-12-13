@@ -2,12 +2,9 @@ import React, { useEffect } from 'react';
 import './About.css';
 
 const About = () => {
-  useEffect(() => {
-    document.title = "React Weather | About";
-  }, []);
 
   useEffect(() => {
-    document.title = "React Weather | About";
+    document.title = "Weatherly | About";
     document.body.classList.add('about-page'); 
     return () => {
       document.body.classList.remove('about-page');
@@ -46,11 +43,11 @@ const About = () => {
         </div>
         <div className="button-container">
         <p id ="button-container-text">For more instructions:</p>
-          <a href = "https://github.com/BradyB1/react-weather-app/blob/main/UserManual.md" >
+          <a href = "https://github.com/BradyB1/react-weather-app/blob/main/UserManual.md" target="_blank" rel="noopener noreferrer">
         <button class="button"><span>User Manual</span></button>
         </a>
         
-        <a href = "https://github.com/BradyB1/react-weather-app/blob/main/DeveloperManual.md" >
+        <a href = "https://github.com/BradyB1/react-weather-app/blob/main/DeveloperManual.md" target="_blank" rel="noopener noreferrer">
         <button class="button"><span>Dev Manual</span></button>
         </a>
         </div>
