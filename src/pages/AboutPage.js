@@ -44,7 +44,16 @@ const About = () => {
           </dl>
           <span> <img src = "opwimg.png" id = "opwimg" alt = "opwimg"></img> <img src = "geoloc.png" id = "geoloc" alt = "geolocimg"></img> <img src ="leaf.jpg" id="leafimg" alt = "leafimg"></img></span>
         </div>
+        <div className="button-container">
+        <p id ="button-container-text">For more instructions:</p>
+          <a href = "https://github.com/BradyB1/react-weather-app/blob/main/UserManual.md" >
+        <button class="button"><span>User Manual</span></button>
+        </a>
         
+        <a href = "https://github.com/BradyB1/react-weather-app/blob/main/DeveloperManual.md" >
+        <button class="button"><span>Dev Manual</span></button>
+        </a>
+        </div>
       </div>
       
       <footer id="about-designedBy">Designed & Developed by: Brady Buttrey, Farah Assgari, and James Miller.</footer>
