@@ -44,11 +44,11 @@ const About = () => {
         <div className="button-container">
         <p id ="button-container-text">For more instructions:</p>
           <a href = "https://github.com/BradyB1/react-weather-app/blob/main/UserManual.md" target="_blank" rel="noopener noreferrer">
-        <button class="button"><span>User Manual</span></button>
+        <button className="button"><span>User Manual</span></button>
         </a>
         
         <a href = "https://github.com/BradyB1/react-weather-app/blob/main/DeveloperManual.md" target="_blank" rel="noopener noreferrer">
-        <button class="button"><span>Dev Manual</span></button>
+        <button className="button"><span>Dev Manual</span></button>
         </a>
         </div>
       </div>
