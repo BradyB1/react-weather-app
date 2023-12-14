@@ -54,6 +54,7 @@ const Home = () => {
     }
   }, []);
 
+  /** get home background image for each weather description */
   const getBackgroundImage = () => {
     if (weatherData && weatherData.weather && weatherData.weather[0]) {
       const weatherDescription = weatherData.weather[0].main;
@@ -81,6 +82,7 @@ const Home = () => {
     return 'url(default-background.jpg)';
   };
 
+  /** style background image*/
     const backgroundStyle = {
       backgroundImage: getBackgroundImage(),
       backgroundRepeat: 'no-repeat',
@@ -89,6 +91,7 @@ const Home = () => {
       height: '100%', 
     };
   
+    /** return data from weather API for location coordinate */
     const getWeatherData = (lat, long) => {
       const api_key = '438f4f20a95048ebb8bbf12f71594554';
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${api_key}`;
@@ -109,6 +112,7 @@ const Home = () => {
       setLocation('');
     };
   
+    /** get location coordinate and details from weather API */
     const searchLocation = async (event) => {
       if (event.key === 'Enter') {
         setLoading(true);
@@ -133,14 +137,14 @@ const Home = () => {
       }
     };
     
+    /** store recent searches in array */
     const updateRecentSearches = (searchedLocation) => {
       const updatedRecentSearches = Array.from(new Set([searchedLocation, ...recentSearches]));
       setRecentSearches(updatedRecentSearches.slice(0, 5));
       localStorage.setItem('recentSearches', JSON.stringify(updatedRecentSearches.slice(0, 5)));
     };
     
-    
-
+    /** perform weather search when a location from recent list is clicked*/
     const handleRecentSearch = (search, event) => {
       event.preventDefault(); 
     
@@ -172,6 +176,7 @@ const Home = () => {
         });
     };
     
+    /** display list of 5 most recent locations searches on home page */
     const renderRecentSearches = () => {
       const limitedRecentSearches = recentSearches.slice(0, 5);
     
@@ -187,7 +192,8 @@ const Home = () => {
         </div>
       );
     };
-  
+
+  /* display map for recent searched location */
     function handleViewLocation() {
       if (weatherData && weatherData.coord) {
         const { lat, lon } = weatherData.coord;
