@@ -5,7 +5,7 @@ import About  from './pages/AboutPage';
 import Contact  from './pages/ContactPage';
 import Home  from './pages/Home';
 import Navbar from './NavBar';
-import Location from './pages/LocationPage';
+
 
 export default function App() {
 
@@ -18,7 +18,7 @@ export default function App() {
               <Route index element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/location" element={<Location />} />
+             
             </Routes>
       </BrowserRouter>
     </div> 

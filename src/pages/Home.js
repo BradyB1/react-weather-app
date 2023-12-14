@@ -24,34 +24,6 @@ const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [zoom, setZoom] = useState(10);
   const [center, setCenter] = useState([0, 0]);
-  const [recentSearches, setRecentSearches] = useState([]);
-
-  useEffect(() => {
-    const storedRecentSearches = localStorage.getItem('recentSearches');
-    if (storedRecentSearches) {
-      setRecentSearches(JSON.parse(storedRecentSearches));
-    }
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-
-          getWeatherData(latitude, longitude);
-        },
-        (error) => {
-          console.error(`Error getting geolocation: ${error.message}`);
-          setLoading(false);
-          setError('Error getting geolocation. Please enter a location manually.');
-        }
-      );
-    } else {
-      console.error('Geolocation is not supported by this browser.');
-      setLoading(false);
-      setError('Geolocation is not supported. Please enter a location manually.');
-    }
-  }, []);
 
   const getBackgroundImage = () => {
     if (weatherData && weatherData.weather && weatherData.weather[0]) {
@@ -76,7 +48,6 @@ const Home = () => {
           return 'url(clear.jpg)';
       }
     }
-
    
     return 'url(default-background.jpg)';
   };
@@ -89,151 +60,104 @@ const Home = () => {
       backgroundPosition: 'center',
       height: '100%', 
     };
-  
-    const getWeatherData = (lat, long) => {
-      const api_key = '438f4f20a95048ebb8bbf12f71594554';
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${api_key}`;
-  
-      axios
-        .get(url)
-        .then((response) => {
-          setWeatherData(response.data);
-          setCenter([lat, long]);
-          setLoading(false);
-          setError(null);
-        })
-        .catch((error) => {
-          console.error('Error fetching weather data:', error);
-          setLoading(false);
-          setError('Error fetching weather data. Please try again.');
-        });
+  useEffect(() => {
+    document.title = "Weatherly | Home"
+    const api_key = '438f4f20a95048ebb8bbf12f71594554';
+
+    
+  const getWeatherData = (lat, long) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${api_key}`;
+
+    axios
+      .get(url)
+      .then((response) => {
+        setWeatherData(response.data);
+        setCenter([lat, long]);
+        setLoading(false);
+        setError(null);
+      })
+      .catch((error) => {
+        console.error('Error fetching weather data:', error);
+        setLoading(false);
+        setError('Error fetching weather data. Please try again.');
+      });
       setLocation('');
-    };
-  
-    const searchLocation = async (event) => {
-      if (event.key === 'Enter') {
-        setLoading(true);
-        const api_key = '438f4f20a95048ebb8bbf12f71594554';
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${api_key}`;
-    
-        try {
-          const response = await axios.get(url);
-          setWeatherData(response.data);
-          setLoading(false);
-          setError(null);
-    
-          // Add the recent search to the state and update local storage
-          const updatedRecentSearches = [...recentSearches, response.data.name];
-          setRecentSearches(updatedRecentSearches.slice(0, 5));
-          localStorage.setItem('recentSearches', JSON.stringify(updatedRecentSearches.slice(0, 5)));
-    
-          // Call getWeatherData with coordinates
-          getWeatherData(response.data.coord.lat, response.data.coord.lon);
-        } catch (error) {
-          console.error('Error fetching weather data:', error);
-          setLoading(false);
-          setError('Location not found. Please try again.');
-        }
-      }
-    };
+  };
 
-    const handleRecentSearch = (search) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          getWeatherData(latitude, longitude);
+        },
+        (error) => {
+          console.error(`Error getting geolocation: ${error.message}`);
+          setLoading(false);
+          setError('Error getting geolocation. Please enter a location manually.');
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+      setLoading(false);
+      setError('Geolocation is not supported. Please enter a location manually.');
+    }
+  }, []);
+
+  const searchLocation = (event) => {
+    if (event.key === 'Enter') {
       setLoading(true);
+
       const api_key = '438f4f20a95048ebb8bbf12f71594554';
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=imperial&appid=${api_key}`;
-    
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${api_key}`;
+
       axios
         .get(url)
         .then((response) => {
           setWeatherData(response.data);
           setLoading(false);
           setError(null);
-    
-          // Update the recent searches
-          const updatedRecentSearches = [search, ...recentSearches.filter(item => item !== search).slice(0, 4)];
-          setRecentSearches(updatedRecentSearches);
-          localStorage.setItem('recentSearches', JSON.stringify(updatedRecentSearches));
-    
-          // Call getWeatherData with coordinates
-          getWeatherData(response.data.coord.lat, response.data.coord.lon);
         })
         .catch((error) => {
           console.error('Error fetching weather data:', error);
           setLoading(false);
           setError('Location not found. Please try again.');
         });
-    };
-  
-  
-    // Function to render recent searches
-    const renderRecentSearches = () => {
-      const limitedRecentSearches = recentSearches.slice(0, 5);
-    
-      return (
-        <div className="recent-searches">
-          <p>Recent Searches:</p>
-          <ul>
-            {limitedRecentSearches.map((search, index) => (
-              <li key={index} onClick={() => handleRecentSearch(search)}>
-                {search}
-              </li>
-            ))}
-          </ul>
-        </div>
-      );
-    };
-  
-    function handleViewLocation() {
-      if (weatherData && weatherData.coord) {
-        const { lat, lon } = weatherData.coord;
-        const cityName = weatherData.name;
-        const temperature = weatherData.main ? weatherData.main.temp.toFixed() : '';
-  
-        return (
-          <MapContainer
-            center={[lat, lon]}
-            zoom={15}
-            style={{ height: '600px', width: '100%' }}
-            whenCreated={(map) => {
-              map.on('zoom', () => {
-                setZoom(map.getZoom());
-              });
-            }}
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            <Marker position={[lat, lon]} icon={customMarker(temperature, zoom)}>
-              <Popup>{cityName}</Popup>
-            </Marker>
-          </MapContainer>
-        );
-      }
+
+      setLocation('');
     }
+  };
 
+  function handleViewLocation() {
+    if (weatherData && weatherData.coord) {
+      console.log("have coords");
+      const { lat, lon } = weatherData.coord;
+      const cityName = weatherData.name;
+      const temperature = weatherData.main ? weatherData.main.temp.toFixed() : '';
 
-  // close to the original function --saving as backup
-  // function handleViewLocation() {
-  //   if (weatherData && weatherData.coord) {
-  //     console.log("have coords")
-  //     const { lat, lon } = weatherData.coord;
-  //     const cityName = weatherData.name;
-  //     return  <MapContainer center={[lat, lon ]} zoom={15} style={{ height: '600px', width: '100%' }}>
-  //       <TileLayer
-  //         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  //         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  //         />
-  //       <Marker position={[lat, lon ]}>
-  //         <Popup>{cityName}</Popup>
-  //       </Marker>
-  //     </MapContainer>
-
-  //     }
-  //   }
+      return (
+        <MapContainer center={[lat, lon]} zoom={15} style={{ height: '600px', width: '100%' }}
+          whenCreated={(map) => {
+          map.on('zoom', () => {
+            setZoom(map.getZoom());
+          });
+        }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={[lat, lon]} icon={customMarker(temperature, zoom)}>
+            <Popup>{cityName}</Popup>
+          </Marker>
+        </MapContainer>
+      );
+    }
+  }
 
   return (
-    <div className="app" style={backgroundStyle}>
+  <div className="app" style={backgroundStyle}>
       <div className="search">
         <input
           value={location}
@@ -242,7 +166,6 @@ const Home = () => {
           placeholder="Enter Location (City)"
           type="text"
         />
-        {recentSearches.length > 0 && renderRecentSearches()}
       </div>
 
       <div className="container">
@@ -299,19 +222,7 @@ const Home = () => {
                   ) : null}
                   <p>Cloudiness</p>
                 </div>
-              </div>
-
-              {/* <div className="min-max-box">
-                <div className="min-max">
-                  {weatherData.main ? (
-                    <p className="bold">
-                      {weatherData.main.temp_min.toFixed()}°F-{weatherData.main.temp_max.toFixed()}°F
-                    </p>
-                  ) : null}
-                  <p>Min-Max</p>
-                </div>
-              </div> */}
-            
+              </div>         
               <div className="min-box">
                 <div className="min">
                   {weatherData.main ? (

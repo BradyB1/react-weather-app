@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './ContactPage.css';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://spwzxcljfgjkxxeyzdej.supabase.co';
