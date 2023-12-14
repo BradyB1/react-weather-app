@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+//import { useNavigate } from 'react-router-dom';
 import '../index.css';
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
@@ -115,18 +116,16 @@ const Home = () => {
         setLoading(true);
         const api_key = '438f4f20a95048ebb8bbf12f71594554';
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${api_key}`;
-    
+  
         try {
           const response = await axios.get(url);
           setWeatherData(response.data);
           setLoading(false);
           setError(null);
-    
           // Add the recent search to the state and update local storage
-          const updatedRecentSearches = [...recentSearches, response.data.name];
-          setRecentSearches(updatedRecentSearches.slice(0, 5));
-          localStorage.setItem('recentSearches', JSON.stringify(updatedRecentSearches.slice(0, 5)));
-    
+          const updatedRecentSearches = [...recentSearches, location];
+          setRecentSearches(updatedRecentSearches);
+          localStorage.setItem('recentSearches', JSON.stringify(updatedRecentSearches));
           // Call getWeatherData with coordinates
           getWeatherData(response.data.coord.lat, response.data.coord.lon);
         } catch (error) {
@@ -135,52 +134,6 @@ const Home = () => {
           setError('Location not found. Please try again.');
         }
       }
-    };
-
-    const handleRecentSearch = (search) => {
-      setLoading(true);
-      const api_key = '438f4f20a95048ebb8bbf12f71594554';
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=imperial&appid=${api_key}`;
-    
-      axios
-        .get(url)
-        .then((response) => {
-          setWeatherData(response.data);
-          setLoading(false);
-          setError(null);
-    
-          // Update the recent searches
-          const updatedRecentSearches = [search, ...recentSearches.filter(item => item !== search).slice(0, 4)];
-          setRecentSearches(updatedRecentSearches);
-          localStorage.setItem('recentSearches', JSON.stringify(updatedRecentSearches));
-    
-          // Call getWeatherData with coordinates
-          getWeatherData(response.data.coord.lat, response.data.coord.lon);
-        })
-        .catch((error) => {
-          console.error('Error fetching weather data:', error);
-          setLoading(false);
-          setError('Location not found. Please try again.');
-        });
-    };
-  
-  
-    // Function to render recent searches
-    const renderRecentSearches = () => {
-      const limitedRecentSearches = recentSearches.slice(0, 5);
-    
-      return (
-        <div className="recent-searches">
-          <p>Recent Searches:</p>
-          <ul>
-            {limitedRecentSearches.map((search, index) => (
-              <li key={index} onClick={() => handleRecentSearch(search)}>
-                {search}
-              </li>
-            ))}
-          </ul>
-        </div>
-      );
     };
   
     function handleViewLocation() {
@@ -242,7 +195,16 @@ const Home = () => {
           placeholder="Enter Location (City)"
           type="text"
         />
-        {recentSearches.length > 0 && renderRecentSearches()}
+        {recentSearches.length > 0 && (
+          <div className="recent-searches">
+            <p>Recent Searches:</p>
+            <ul>
+              {recentSearches.map((search, index) => (
+                <li key={index}>{search}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div className="container">
