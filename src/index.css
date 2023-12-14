@@ -233,6 +233,9 @@ h1 {
 }
 .contact-page {
   background-color: #726f6f;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 #contact-title-hr {
@@ -245,7 +248,7 @@ h1 {
 .text-content-form {
   background-color: #131123;
   max-width: 375px;
-  height: 700px;
+  height: 500px;
   margin: auto;
   padding: 0 1rem;
   position: relative;
