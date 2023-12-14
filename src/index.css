@@ -369,6 +369,9 @@ h1 {
   padding: 20px;
   background-color: #373738; 
   box-sizing: border-box;
+  position:inherit;
+  overflow: hidden;
+  bottom:0;
 }
 
 #about-h1 {
@@ -470,6 +473,7 @@ h1 {
   background-color: #373738;
   box-sizing: border-box;
   height: auto; 
+  
 }
 
 /* buttons */
