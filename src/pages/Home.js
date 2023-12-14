@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import { useNavigate } from 'react-router-dom';
 import '../index.css';
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
@@ -26,8 +25,6 @@ const Home = () => {
   const [zoom, setZoom] = useState(10);
   const [center, setCenter] = useState([0, 0]);
 
-
-
   const getBackgroundImage = () => {
     if (weatherData && weatherData.weather && weatherData.weather[0]) {
       const weatherDescription = weatherData.weather[0].main;
@@ -51,7 +48,6 @@ const Home = () => {
           return 'url(clear.jpg)';
       }
     }
-
    
     return 'url(default-background.jpg)';
   };
@@ -133,27 +129,6 @@ const Home = () => {
     }
   };
 
-
-
-  // close to the original function --saving as backup
-  // function handleViewLocation() {
-  //   if (weatherData && weatherData.coord) {
-  //     console.log("have coords")
-  //     const { lat, lon } = weatherData.coord;
-  //     const cityName = weatherData.name;
-  //     return  <MapContainer center={[lat, lon ]} zoom={15} style={{ height: '600px', width: '100%' }}>
-  //       <TileLayer
-  //         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  //         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  //         />
-  //       <Marker position={[lat, lon ]}>
-  //         <Popup>{cityName}</Popup>
-  //       </Marker>
-  //     </MapContainer>
-
-  //     }
-  //   }
-
   function handleViewLocation() {
     if (weatherData && weatherData.coord) {
       console.log("have coords");
@@ -180,7 +155,6 @@ const Home = () => {
       );
     }
   }
-
 
   return (
   <div className="app" style={backgroundStyle}>
@@ -248,19 +222,7 @@ const Home = () => {
                   ) : null}
                   <p>Cloudiness</p>
                 </div>
-              </div>
-
-              {/* <div className="min-max-box">
-                <div className="min-max">
-                  {weatherData.main ? (
-                    <p className="bold">
-                      {weatherData.main.temp_min.toFixed()}°F-{weatherData.main.temp_max.toFixed()}°F
-                    </p>
-                  ) : null}
-                  <p>Min-Max</p>
-                </div>
-              </div> */}
-            
+              </div>         
               <div className="min-box">
                 <div className="min">
                   {weatherData.main ? (
